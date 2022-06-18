@@ -1,6 +1,26 @@
-// getHours();
-// getMinutes();
-// getSeconds();
+const hour = document.querySelector(".hours");
+const minute = document.querySelector(".minute");
+const second = document.querySelector(".second");
+const ampm = document.querySelector(".ampm");
+const date = document.querySelector(".date");
 
-const time = new Date();
-console.log(time);
+const getTime = () => {
+  hour.innerHTML = new Date().getHours() % 12;
+  minute.innerHTML = new Date().getMinutes();
+  second.innerHTML = new Date().getSeconds();
+  date.innerHTML = new Date().toDateString();
+  if (new Date().getHours() > 12) {
+    ampm.textContent = "PM";
+  } else {
+    ampm.textContent = "AM";
+  }
+  hour.textContent.length == 1 && (hour.textContent = "0" + hour.textContent);
+
+  minute.textContent.length == 1 &&
+    (minute.textContent = "0" + minute.textContent);
+
+  second.textContent.length == 1 &&
+    (second.textContent = "0" + second.textContent);
+};
+
+setInterval(getTime, 999);
